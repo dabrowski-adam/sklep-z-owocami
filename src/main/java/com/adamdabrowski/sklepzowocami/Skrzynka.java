@@ -12,17 +12,13 @@ public class Skrzynka implements Kontener<Owoc> {
     }
 
     public boolean dodaj(Owoc owoc) {
-        if (owoc == null || (podajWage() + owoc.waga) > 2) {
-            return false;
-        }
+        if (owoc == null) { return false; }
 
-        return owoce.add(owoc);
+        return (podajWage() + owoc.waga <= 2) && owoce.add(owoc);
     }
 
     public boolean usun(Owoc owoc) {
-        if (owoc == null || !owoce.contains(owoc)) {
-            return false;
-        }
+        if (owoc == null) { return false; }
 
         return owoce.remove(owoc);
     }
@@ -32,10 +28,14 @@ public class Skrzynka implements Kontener<Owoc> {
     }
 
     public double podajCene() {
-        return owoce.stream().mapToDouble(o -> o.waga * o.cena).sum();
+        return owoce.stream()
+                .mapToDouble(o -> o.waga * o.cena)
+                .sum();
     }
 
     public double podajWage() {
-        return owoce.stream().mapToDouble(o -> o.waga).sum();
+        return owoce.stream()
+                .mapToDouble(o -> o.waga)
+                .sum();
     }
 }
