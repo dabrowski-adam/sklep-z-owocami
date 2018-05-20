@@ -4,8 +4,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Owoc {
-    double waga;
-    double cena;
+    final double waga;
+    final double cena;
 
     public Owoc(double waga, double cena) {
         this.waga = waga;
